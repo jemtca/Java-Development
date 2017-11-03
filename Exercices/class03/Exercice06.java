@@ -12,12 +12,18 @@ public class Exercice06 {
 		System.out.print("Input a year: ");
 		year = scan.nextInt();
 
+		boolean b = ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0));
+
 		switch (month) {
 		case 1:
 			System.out.println("January " + year + " has 31 days.");
 			break;
 		case 2:
-			System.out.println("Febrary " + year + " has 28 or 29 days :-).");
+			if (b) {
+				System.out.println("Febrary " + year + " has 29 days.");
+			} else {
+				System.out.println("Febrary " + year + " has 28 days.");
+			}
 			break;
 		case 3:
 			System.out.println("March " + year + " has 31 days.");
