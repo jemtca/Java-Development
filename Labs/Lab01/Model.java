@@ -21,13 +21,22 @@ public class Model {
 
 	public static final double ONE_POUND_TO_KG = 0.453592;
 	public static final double ONE_KG_TO_POUND = 2.20462;
-	public static final int ONE_FEET_TO_INCHES = 12;
+	public static final int ONE_FOOT_TO_INCHES = 12;
+	public static final double ONE_INCH_TO_CM = 2.54;
 
-	Model() {
+	// public static final int INCHES_PER_FOOT = 12;
+	public static final int BASE_RATE_DOLLARS_PER_HOUR = 60;
+	public static final int TALL_INCHES = 67;
+	public static final double THIN_POUNDS = 140.0;
+	public static final int TALL_THIN_BONUS_DOLLARS_PER_HOUR = 5;
+	public static final int TRAVEL_BONUS_DOLLARS_PER_HOUR = 4;
+	public static final int SMOKER_DEDUCTION_DOLLARS_PER_HOUR = 10;
+
+	public Model() {
 
 	}
 
-	Model(String firstName, String lastname, int height, int weight, boolean canTravel, boolean smokes) {
+	public Model(String firstName, String lastname, int height, double weight, boolean canTravel, boolean smokes) {
 
 		setFirstName(firstName);
 		setLastName(lastname);
@@ -38,12 +47,12 @@ public class Model {
 
 	}
 
-	Model(String firstName, String lastName, int weightInches, int heigthPounds) {
+	public Model(String firstName, String lastName, int heightPounds, double weightInches) {
 
 		setFirstName(firstName);
 		setLastName(lastName);
+		setHeight(heightPounds);
 		setWeight(weightInches);
-		setHeight(heigthPounds);
 		setCanTravel(true);
 		setSmokes(false);
 
@@ -152,7 +161,7 @@ public class Model {
 
 	public final void setHeight(int feet, int inches) {
 
-		int heightToInches = (feet * ONE_FEET_TO_INCHES) + inches;
+		int heightToInches = (feet * ONE_FOOT_TO_INCHES) + inches;
 
 		setHeight(heightToInches);
 
@@ -177,5 +186,110 @@ public class Model {
 		return occupation;
 
 	}
+
+	public int calculatePayDollarsPerHour() {
+
+		int amount = BASE_RATE_DOLLARS_PER_HOUR;
+
+		if (getHeight() >= TALL_INCHES && getWeight() <= THIN_POUNDS) {
+			amount = amount + TALL_THIN_BONUS_DOLLARS_PER_HOUR;
+		}
+
+		if (getCanTravel()) {
+			amount = amount + TRAVEL_BONUS_DOLLARS_PER_HOUR;
+		}
+
+		if (getSmokes()) {
+			amount = amount - SMOKER_DEDUCTION_DOLLARS_PER_HOUR;
+		}
+
+		return amount;
+
+	}
+
+	public void printDetails() {
+
+		System.out.println("Name: " + getFirstName() + " " + getLastName() + ".");
+		System.out.println("Height: " + getHeight() + " inches.");
+		System.out.println("Weight: " + Math.round(getWeight()) + " pounds.");
+
+		if (getCanTravel()) {
+			System.out.println("Does Travel.");
+		} else {
+			System.out.println("Does not travel.");
+		}
+
+		if (getSmokes()) {
+			System.out.println("Does smoke.");
+		} else {
+			System.out.println("Does not travel.");
+		}
+
+		System.out.println();
+
+	}
+
+	public void displayModelDetails() {
+
+		System.out.println("Name: " + getFirstName() + " " + getLastName() + ".");
+		System.out.println("Height: " + ".");
+		System.out.println("Weight: " + getWeight() + " pounds.");
+
+		if (getCanTravel()) {
+			System.out.println("Travels: yep.");
+		} else {
+			System.out.println("Travels: nope.");
+		}
+
+		if (getSmokes()) {
+			System.out.println("Somkes: yep.");
+		} else {
+			System.out.println("Smokes: nope.");
+		}
+
+		System.out.println("Hourly rate: $" + calculatePayDollarsPerHour() + ".");
+
+		System.out.println();
+
+	}
+
+	public void displayModelDetails(boolean metricUnits) {
+
+		if (metricUnits) {
+
+			System.out.println("Name: " + getFirstName() + " " + getLastName() + ".");
+			System.out.println("Height: " + Math.round(getHeight() * ONE_INCH_TO_CM) + " cm.");
+			System.out.println("Weight: " + Math.round(getWeightKg()) + " kg.");
+
+			if (getCanTravel()) {
+				System.out.println("Travels: yep.");
+			} else {
+				System.out.println("Travels: nope.");
+			}
+
+			if (getSmokes()) {
+				System.out.println("Somkes: yep.");
+			} else {
+				System.out.println("Smokes: nope.");
+			}
+
+			System.out.println("Hourly rate: $" + calculatePayDollarsPerHour() + ".");
+
+		} else {
+
+			displayModelDetails();
+
+		}
+
+		System.out.println();
+
+	}
+
+	// @Override
+	// public String toString() {
+	// return "Model [firstName=" + firstName + ", lastName=" + lastName + ",
+	// height=" + height + ", weight=" + weight
+	// + ", canTravel=" + canTravel + ", smokes=" + smokes + "]";
+	// }
 
 }
