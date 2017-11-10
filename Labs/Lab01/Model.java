@@ -32,10 +32,22 @@ public class Model {
 	public static final int TRAVEL_BONUS_DOLLARS_PER_HOUR = 4;
 	public static final int SMOKER_DEDUCTION_DOLLARS_PER_HOUR = 10;
 
+	/**
+	* 
+	*/
 	public Model() {
 
 	}
 
+	/**
+	 * 
+	 * @param firstName
+	 * @param lastname
+	 * @param height
+	 * @param weight
+	 * @param canTravel
+	 * @param smokes
+	 */
 	public Model(String firstName, String lastname, int height, double weight, boolean canTravel, boolean smokes) {
 
 		setFirstName(firstName);
@@ -47,23 +59,38 @@ public class Model {
 
 	}
 
-	public Model(String firstName, String lastName, int heightPounds, double weightInches) {
+	/**
+	 * 
+	 * @param firstName
+	 * @param lastName
+	 * @param height
+	 * @param weight
+	 */
+	public Model(String firstName, String lastName, int height, double weight) {
 
 		setFirstName(firstName);
 		setLastName(lastName);
-		setHeight(heightPounds);
-		setWeight(weightInches);
+		setHeight(height);
+		setWeight(weight);
 		setCanTravel(true);
 		setSmokes(false);
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String getFirstName() {
 
 		return this.firstName;
 
 	}
 
+	/**
+	 * 
+	 * @param firstName
+	 */
 	public final void setFirstName(String firstName) {
 
 		if (firstName != null && firstName.length() >= STRING_MIN && firstName.length() <= STRING_MAX) {
@@ -72,12 +99,20 @@ public class Model {
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String getLastName() {
 
 		return this.lastName;
 
 	}
 
+	/**
+	 * 
+	 * @param lastName
+	 */
 	public final void setLastName(String lastName) {
 
 		if (lastName != null && lastName.length() >= STRING_MIN && lastName.length() <= STRING_MAX) {
@@ -86,12 +121,20 @@ public class Model {
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public int getHeight() {
 
 		return this.height;
 
 	}
 
+	/**
+	 * 
+	 * @param height
+	 */
 	public final void setHeight(int height) {
 
 		if (height >= HEIGHT_MIN && height <= HEIGHT_MAX) {
@@ -100,12 +143,20 @@ public class Model {
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public double getWeight() {
 
 		return this.weight;
 
 	}
 
+	/**
+	 * 
+	 * @param weight
+	 */
 	public final void setWeight(double weight) {
 
 		if (weight >= WEIGHT_MIN && weight <= WEIGHT_MAX) {
@@ -114,30 +165,50 @@ public class Model {
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean getCanTravel() {
 
 		return this.canTravel;
 
 	}
 
+	/**
+	 * 
+	 * @param canTravel
+	 */
 	public final void setCanTravel(boolean canTravel) {
 
 		this.canTravel = canTravel;
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean getSmokes() {
 
 		return this.smokes;
 
 	}
 
+	/**
+	 * 
+	 * @param smokes
+	 */
 	public final void setSmokes(boolean smokes) {
 
 		this.smokes = smokes;
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String getHeightInFeetAndInches() {
 
 		int inches = getHeight();
@@ -159,6 +230,11 @@ public class Model {
 
 	}
 
+	/**
+	 * 
+	 * @param feet
+	 * @param inches
+	 */
 	public final void setHeight(int feet, int inches) {
 
 		int heightToInches = (feet * ONE_FOOT_TO_INCHES) + inches;
@@ -167,12 +243,20 @@ public class Model {
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public long getWeightKg() {
 
-		return (long) (getWeight() * ONE_POUND_TO_KG);
+		return Math.round(getWeight() * ONE_POUND_TO_KG);
 
 	}
 
+	/**
+	 * 
+	 * @param kilograms
+	 */
 	public final void setWeight(long kilograms) {
 
 		double weightToPounds = kilograms * ONE_KG_TO_POUND;
@@ -181,12 +265,20 @@ public class Model {
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public static String getOcupation() {
 
 		return occupation;
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public int calculatePayDollarsPerHour() {
 
 		int amount = BASE_RATE_DOLLARS_PER_HOUR;
@@ -207,6 +299,9 @@ public class Model {
 
 	}
 
+	/**
+	 * 
+	 */
 	public void printDetails() {
 
 		System.out.println("Name: " + getFirstName() + " " + getLastName() + ".");
@@ -229,11 +324,14 @@ public class Model {
 
 	}
 
+	/**
+	 * 
+	 */
 	public void displayModelDetails() {
 
 		System.out.println("Name: " + getFirstName() + " " + getLastName() + ".");
-		System.out.println("Height: " + ".");
-		System.out.println("Weight: " + getWeight() + " pounds.");
+		System.out.println("Height: " + getHeightInFeetAndInches());
+		System.out.println("Weight: " + Math.round(getWeight()) + " pounds.");
 
 		if (getCanTravel()) {
 			System.out.println("Travels: yep.");
@@ -253,13 +351,17 @@ public class Model {
 
 	}
 
+	/**
+	 * 
+	 * @param metricUnits
+	 */
 	public void displayModelDetails(boolean metricUnits) {
 
 		if (metricUnits) {
 
 			System.out.println("Name: " + getFirstName() + " " + getLastName() + ".");
 			System.out.println("Height: " + Math.round(getHeight() * ONE_INCH_TO_CM) + " cm.");
-			System.out.println("Weight: " + Math.round(getWeightKg()) + " kg.");
+			System.out.println("Weight: " + getWeightKg() + " kg.");
 
 			if (getCanTravel()) {
 				System.out.println("Travels: yep.");
@@ -277,7 +379,23 @@ public class Model {
 
 		} else {
 
-			displayModelDetails();
+			System.out.println("Name: " + getFirstName() + " " + getLastName() + ".");
+			System.out.println("Height: " + getHeight() + " inches.");
+			System.out.println("Weight: " + Math.round(getWeight()) + " pounds.");
+
+			if (getCanTravel()) {
+				System.out.println("Travels: yep.");
+			} else {
+				System.out.println("Travels: nope.");
+			}
+
+			if (getSmokes()) {
+				System.out.println("Smokes: yep.");
+			} else {
+				System.out.println("Smokes: nope.");
+			}
+
+			System.out.println("Hourly rate: $" + calculatePayDollarsPerHour() + ".");
 
 		}
 
