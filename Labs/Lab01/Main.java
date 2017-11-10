@@ -2,13 +2,19 @@ package controller;
 
 import model.Model;
 
+/**
+ * Driver class
+ * 
+ * @author Jesús
+ *
+ */
 public class Main {
 
 	public static void main(String[] args) {
 
 //		Model o1 = new Model("Susan", "Smith", 70, 120, false, true);
 //		Model o2 = new Model("Tiger", "Woods", 72, 190, true, false);
-		Model o3 = new Model("Using","Second Constructor",84,280);
+		Model o3 = new Model("Constructor","With two parameters",84,280);
 
 //		o1.printDetails();
 //		o2.printDetails();
@@ -34,12 +40,12 @@ public class Main {
 
 		System.out.println("[CHANGING THE ORIGINAL OBJECT]\n");
 		System.out.println("[SETTING NEW HEIGHT]");
-		o3.setHeight(2, 2);
+		o3.setHeight(2, 0);
 		o3.displayModelDetails();
 
 		System.out.println("[SETTING NEW WEIGHT]");
-		o3.setWeight(88);
-		o3.displayModelDetails(true);
+		o3.setWeight(37);
+		o3.displayModelDetails(false);
 
 	}
 
