@@ -15,8 +15,8 @@ public class Province {
 
 	public Province() {
 
-		this.name = DEFAULT_CAPITAL;
-		this.capital = DEFAULT_PROVINCE;
+		this.name = DEFAULT_PROVINCE;
+		this.capital = DEFAULT_CAPITAL;
 		this.populationInMillions = DEFAULT_POPULATION_IN_MILLIONS;
 
 	}
@@ -78,8 +78,8 @@ public class Province {
 	private boolean isValidProvince(String province) {
 
 		String[] provinces = { "Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador",
-				"Northwest Territories", "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec",
-				"Saskatchewan", "Yukon" };
+				"Nova Scotia", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan" };
+		// "Nunavut", "Northwest Territories", "Yukon"
 
 		boolean found = false;
 		int i = 0;
@@ -97,8 +97,9 @@ public class Province {
 
 	private boolean isValidCapital(String capital) {
 
-		String[] capitals = { "Charlottetown", "Edmonton", "Fredericton", "Halifax", "Iqaluit", "Quebec City", "Regina",
-				"St. John's", "Toronto", "Victoria", "Whitehorse", "Winnipeg", "Yellowknife" };
+		String[] capitals = { "Charlottetown", "Edmonton", "Fredericton", "Halifax", "Quebec City", "Regina",
+				"St. John's", "Toronto", "Victoria", "Winnipeg" };
+		// "Iqaluit", "Yellowknife", "Whitehorse"
 
 		boolean found = false;
 
@@ -123,5 +124,19 @@ public class Province {
 		return rightValue;
 
 	}
+
+	public String getDetails() {
+
+		return "The capital of " + this.name + " (pop. " + this.populationInMillions + " million) is " + this.capital
+				+ ".";
+
+	}
+
+	// @Override
+	// public String toString() {
+	// return "Province [name=" + name + ", capital=" + capital + ",
+	// populationInMillions=" + populationInMillions
+	// + "]";
+	// }
 
 }
