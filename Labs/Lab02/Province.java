@@ -28,8 +28,8 @@ public class Province {
 			setCapital(capital);
 			setPopulationInMillions(populationInMillions);
 		} else {
-			this.name = DEFAULT_CAPITAL;
-			this.capital = DEFAULT_PROVINCE;
+			this.name = DEFAULT_PROVINCE;
+			this.capital = DEFAULT_CAPITAL;
 			this.populationInMillions = DEFAULT_POPULATION_IN_MILLIONS;
 		}
 
@@ -85,7 +85,7 @@ public class Province {
 		int i = 0;
 
 		while (i < provinces.length && !found) {
-			if (provinces[i].equals(province)) {
+			if (province.equals(provinces[i])) {
 				found = true;
 			}
 			i++;
@@ -104,7 +104,7 @@ public class Province {
 		boolean found = false;
 
 		for (int i = 0; i < capitals.length && !found; i++) {
-			if (capitals[i].equals(capital)) {
+			if (capital.equals(capitals[i])) {
 				found = true;
 			}
 		}
@@ -134,8 +134,8 @@ public class Province {
 
 	// @Override
 	// public String toString() {
-	// return "Province [name=" + name + ", capital=" + capital + ",
-	// populationInMillions=" + populationInMillions
+	// return "Province [name= " + name + ", capital= " + capital + ",
+	// populationInMillions= " + populationInMillions
 	// + "]";
 	// }
 
