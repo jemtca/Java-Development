@@ -2,9 +2,18 @@ package ca.ciccc.java.model;
 
 public class Country {
 
+	/**
+	 * Name of the country
+	 */
 	private String name;
+	/**
+	 * Array of provinces
+	 */
 	private Province[] provinces = new Province[12];
 
+	/**
+	 * Constructor: no parameters
+	 */
 	public Country() {
 
 		name = "Canada";
@@ -24,6 +33,9 @@ public class Country {
 
 	}
 
+	/**
+	 * Method that prints the information of each province in the array
+	 */
 	public void displayAllProvinces() {
 
 		for (Province p : provinces) {
@@ -34,6 +46,13 @@ public class Country {
 
 	}
 
+	/**
+	 * Method that counts how many provinces are between a minimum and a maximum population (millions)
+	 * 
+	 * @param min (int min)
+	 * @param max (int max)
+	 * @return count
+	 */
 	public int howManyHaveThisPopulation(int min, int max) {
 
 		int count = 0;
@@ -48,6 +67,12 @@ public class Country {
 
 	}
 
+	/**
+	 * Method that prints extra information of the country
+	 * 
+	 * @param min (int min)
+	 * @param max (int max)
+	 */
 	public void displayExtraInfo(int min, int max) {
 
 		System.out.println("\nThere are " + howManyHaveThisPopulation(min, max) + " provinces in " + this.name
