@@ -38,7 +38,8 @@ public class Pawn extends ChessPiece {
 		// a pawn can be a knight, a bishop, a rook or a queen
 		else {
 			setHasBeenPromoted(true);
-			// change the value
+			this.newPiece = newPiece;
+			//this.newPiece.setValue(newPiece.getValue());
 			System.out.println("Promoted.");
 		}
 
@@ -76,29 +77,29 @@ public class Pawn extends ChessPiece {
 			return true;
 		}
 
-		if (!super.equals(obj)) {
+		if (obj == null) { //!super.equals(obj)
 			return false;
 		}
 
-		if (getClass() != obj.getClass()) {
+		if (!(obj instanceof ChessPiece)) { // getClass() != obj.getClass()
 			return false;
 		}
 
 		Pawn other = (Pawn) obj;
-		if (hasBeenPromoted != other.hasBeenPromoted) {
+		if (this.hasBeenPromoted != other.hasBeenPromoted) {
 			return false;
 		}
 
-		if (newPiece == null) {
+		if (this.newPiece == null) {
 			if (other.newPiece != null) {
 				return false;
 			}
-		} else if (!newPiece.equals(other.newPiece)) {
+		} else if (!this.newPiece.equals(other.newPiece)) {
 			return false;
 		}
 
 		return true;
 
 	}
-
+	
 }

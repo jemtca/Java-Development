@@ -18,7 +18,9 @@ public abstract class ChessPiece {
 
 	public final void setValue(int value) {
 
-		this.value = value;
+		if (value == 1 || value == 2 || value == 3 || value == 5 || value == 9 || value == 1000) {
+			this.value = value;
+		}
 
 	}
 
@@ -52,13 +54,14 @@ public abstract class ChessPiece {
 			return false;
 		}
 
-		if (getClass() != obj.getClass()) {
+		if (!(obj instanceof ChessPiece)) { //getClass() != obj.getClass()
 			return false;
 		}
 
 		ChessPiece other = (ChessPiece) obj;
-		if (value != other.value)
+		if (this.value != other.value) {
 			return false;
+		}
 
 		return true;
 
