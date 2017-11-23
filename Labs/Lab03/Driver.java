@@ -47,24 +47,24 @@ public class Driver {
 
 		System.out.println("\n[ Promoting a pawn to a knight ]");
 		cp1.promote(cp5);
-		System.out.println("Attribute value from new Piece: " + cp1.getChessPiece().getValue());
+		System.out.println("Attribute value from new Piece: " + cp1.getNewPiece().getValue());
 
 		System.out.println("\n[ Promoting the same piece again ]");
 		cp1.promote(cp5);
 
 		System.out.println("\n[ Promoting another pawn to a knight ]");
 		cp2.promote(cp5);
-		System.out.println("Attribute value from new Piece: " + cp2.getChessPiece().getValue());
+		System.out.println("Attribute value from new Piece: " + cp2.getNewPiece().getValue());
 
 		System.out.println("\nChecking if two promoted pawns (cp1 and cp2) are the same: " + cp1.equals(cp2));
 
 		System.out.println("\n[ Promoting a pawn to a bishop ]");
 		cp3.promote(cp6);
-		System.out.println("Attribute value from new Piece: " + cp3.getChessPiece().getValue());
+		System.out.println("Attribute value from new Piece: " + cp3.getNewPiece().getValue());
 
 		System.out.println("\n[ Promoting a pawn to a rook ]");
 		cp4.promote(cp7);
-		System.out.println("Attribute value from new Piece: " + cp4.getChessPiece().getValue());
+		System.out.println("Attribute value from new Piece: " + cp4.getNewPiece().getValue());
 
 		System.out.println("\nChecking if two promoted pawns (cp3 and cp4) are the same: " + cp3.equals(cp4));
 

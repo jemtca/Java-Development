@@ -8,7 +8,7 @@ package ca.ciccc.java.model;
 public class Rook extends ChessPiece {
 
 	/**
-	 * 
+	 * Constructor: no parameter/s
 	 */
 	public Rook() {
 
@@ -17,7 +17,7 @@ public class Rook extends ChessPiece {
 	}
 
 	/**
-	 * 
+	 * Method that describes the movement of a rook
 	 */
 	@Override
 	public void move() {

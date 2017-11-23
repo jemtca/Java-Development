@@ -8,7 +8,7 @@ package ca.ciccc.java.model;
 public class Knight extends ChessPiece {
 
 	/**
-	 * 
+	 * Constructor: no parameter/s
 	 */
 	public Knight() {
 
@@ -17,7 +17,7 @@ public class Knight extends ChessPiece {
 	}
 
 	/**
-	 * 
+	 * Method that describes the movement of a knight
 	 */
 	@Override
 	public void move() {

@@ -8,13 +8,15 @@ package ca.ciccc.java.model;
 public abstract class ChessPiece {
 
 	/**
-	 * 
+	 * Private attribute for the value of the pieces in Chess
 	 */
 	private int value;
 
 	/**
+	 * Constructor: one parameter
 	 * 
 	 * @param value
+	 *            (int value)
 	 */
 	public ChessPiece(int value) {
 
@@ -23,8 +25,9 @@ public abstract class ChessPiece {
 	}
 
 	/**
+	 * Value accessor
 	 * 
-	 * @return
+	 * @return value
 	 */
 	public int getValue() {
 
@@ -33,8 +36,10 @@ public abstract class ChessPiece {
 	}
 
 	/**
+	 * Value mutator
 	 * 
 	 * @param value
+	 *            (int value)
 	 */
 	public final void setValue(int value) {
 
@@ -45,7 +50,8 @@ public abstract class ChessPiece {
 	}
 
 	/**
-	 * 
+	 * Abstract method to describe the movement of the pieces in Chess (implement it
+	 * in each class)
 	 */
 	public abstract void move();
 
@@ -67,7 +73,9 @@ public abstract class ChessPiece {
 	}
 
 	/**
+	 * Method to check if two chess pieces are the same or different ones
 	 * 
+	 * @return true if equals, false otherwise
 	 */
 	@Override
 	public boolean equals(Object obj) {

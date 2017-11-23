@@ -8,17 +8,17 @@ package ca.ciccc.java.model;
 public class Pawn extends ChessPiece {
 
 	/**
-	 * 
+	 * Private attribute to know if a pawn has been promoted to another piece
 	 */
 	private boolean hasBeenPromoted;
 
 	/**
-	 * 
+	 * Private attribute (ChessPiece instance) when a pawn has been promoted
 	 */
-	ChessPiece newPiece;
+	private ChessPiece newPiece;
 
 	/**
-	 * 
+	 * Constructor: no parameter/s
 	 */
 	public Pawn() {
 
@@ -27,8 +27,9 @@ public class Pawn extends ChessPiece {
 	}
 
 	/**
+	 * HasBeenPromoted accessor
 	 * 
-	 * @return
+	 * @return true if a pawn has been promoted, false otherwise
 	 */
 	public boolean getHasBeenPromoted() {
 
@@ -37,8 +38,10 @@ public class Pawn extends ChessPiece {
 	}
 
 	/**
+	 * HasBeenPromoted mutator
 	 * 
 	 * @param hasBeenPromoted
+	 *            (boolean hasBennPromoted)
 	 */
 	public final void setHasBeenPromoted(boolean hasBeenPromoted) {
 
@@ -47,18 +50,21 @@ public class Pawn extends ChessPiece {
 	}
 
 	/**
+	 * NewPiece accessor
 	 * 
-	 * @return
+	 * @return newPiece
 	 */
-	public ChessPiece getChessPiece() {
+	public ChessPiece getNewPiece() {
 
 		return this.newPiece;
 
 	}
 
 	/**
+	 * Method to promote a pawn (newPiece mutator)
 	 * 
 	 * @param newPiece
+	 *            (ChessPiece newPiece)
 	 */
 	public void promote(ChessPiece newPiece) {
 
@@ -80,7 +86,7 @@ public class Pawn extends ChessPiece {
 	}
 
 	/**
-	 * 
+	 * Method that describes the movement of a pawn
 	 */
 	@Override
 	public void move() {
@@ -108,7 +114,9 @@ public class Pawn extends ChessPiece {
 	}
 
 	/**
+	 * Method to check if two pawns are the same or different ones
 	 * 
+	 * @return true if equals, false otherwise
 	 */
 	@Override
 	public boolean equals(Object obj) {

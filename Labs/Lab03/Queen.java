@@ -7,6 +7,9 @@ package ca.ciccc.java.model;
  */
 public class Queen extends ChessPiece {
 
+	/**
+	 * Constrcutor: no parameter/s
+	 */
 	public Queen() {
 
 		super(9);
@@ -14,7 +17,7 @@ public class Queen extends ChessPiece {
 	}
 
 	/**
-	 * 
+	 * Method that describes the movement of a queen
 	 */
 	@Override
 	public void move() {
