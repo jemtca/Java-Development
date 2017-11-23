@@ -1,18 +1,29 @@
 package ca.ciccc.java.model;
 
+/**
+ * 
+ * @author Jesús
+ *
+ */
 public class Bishop extends ChessPiece {
-	
+
+	/**
+	 * 
+	 */
 	public Bishop() {
-		
+
 		super(3);
-		
+
 	}
-	
+
+	/**
+	 * 
+	 */
 	@Override
 	public void move() {
-		
+
 		System.out.println("diagonally");
-		
+
 	}
 
 	@Override

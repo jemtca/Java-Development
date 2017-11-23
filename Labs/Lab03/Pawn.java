@@ -1,50 +1,87 @@
 package ca.ciccc.java.model;
 
+/**
+ * 
+ * @author Jesús
+ *
+ */
 public class Pawn extends ChessPiece {
 
+	/**
+	 * 
+	 */
 	private boolean hasBeenPromoted;
+
+	/**
+	 * 
+	 */
 	ChessPiece newPiece;
 
+	/**
+	 * 
+	 */
 	public Pawn() {
 
 		super(1);
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean getHasBeenPromoted() {
 
 		return this.hasBeenPromoted;
 
 	}
 
+	/**
+	 * 
+	 * @param hasBeenPromoted
+	 */
 	public final void setHasBeenPromoted(boolean hasBeenPromoted) {
 
 		this.hasBeenPromoted = hasBeenPromoted;
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public ChessPiece getChessPiece() {
 
 		return this.newPiece;
 
 	}
 
+	/**
+	 * 
+	 * @param newPiece
+	 */
 	public void promote(ChessPiece newPiece) {
 
-		// a pawn can not be a pawn or a king
-		if (getHasBeenPromoted() || newPiece.getValue() == 1 || newPiece.getValue() == 1000) {
-			System.out.println("Can not be promoted.");
+		// a pawn can not be a pawn or a king and can not be promoted twice
+		if (newPiece.getValue() == 1) {
+			System.out.println("Can not be promoted to a pawn.");
+		} else if (newPiece.getValue() == 1000) {
+			System.out.println("Can not be promoted to a king.");
+		} else if (getHasBeenPromoted()) {
+			System.out.println("Promoted already.");
 		}
 		// a pawn can be a knight, a bishop, a rook or a queen
 		else {
 			setHasBeenPromoted(true);
 			this.newPiece = newPiece;
-			//this.newPiece.setValue(newPiece.getValue());
 			System.out.println("Promoted.");
 		}
 
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void move() {
 
@@ -70,6 +107,9 @@ public class Pawn extends ChessPiece {
 
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public boolean equals(Object obj) {
 
@@ -77,7 +117,7 @@ public class Pawn extends ChessPiece {
 			return true;
 		}
 
-		if (obj == null) { //!super.equals(obj)
+		if (obj == null) { // !super.equals(obj)
 			return false;
 		}
 
@@ -101,5 +141,5 @@ public class Pawn extends ChessPiece {
 		return true;
 
 	}
-	
+
 }

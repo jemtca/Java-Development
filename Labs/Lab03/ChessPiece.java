@@ -1,21 +1,41 @@
 package ca.ciccc.java.model;
 
+/**
+ * 
+ * @author Jesús
+ *
+ */
 public abstract class ChessPiece {
 
+	/**
+	 * 
+	 */
 	private int value;
 
+	/**
+	 * 
+	 * @param value
+	 */
 	public ChessPiece(int value) {
 
 		setValue(value);
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public int getValue() {
 
 		return this.value;
 
 	}
 
+	/**
+	 * 
+	 * @param value
+	 */
 	public final void setValue(int value) {
 
 		if (value == 1 || value == 2 || value == 3 || value == 5 || value == 9 || value == 1000) {
@@ -24,6 +44,9 @@ public abstract class ChessPiece {
 
 	}
 
+	/**
+	 * 
+	 */
 	public abstract void move();
 
 	@Override
@@ -43,6 +66,9 @@ public abstract class ChessPiece {
 
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public boolean equals(Object obj) {
 
@@ -54,7 +80,7 @@ public abstract class ChessPiece {
 			return false;
 		}
 
-		if (!(obj instanceof ChessPiece)) { //getClass() != obj.getClass()
+		if (!(obj instanceof ChessPiece)) { // getClass() != obj.getClass()
 			return false;
 		}
 
