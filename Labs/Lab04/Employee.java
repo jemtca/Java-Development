@@ -4,6 +4,7 @@ public abstract class Employee implements Employable {
 
 	private String name;
 
+	
 	public Employee(String name) {
 
 		setName(name);
