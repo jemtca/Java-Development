@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import ca.ciccc.java.model.Book;
+import ca.ciccc.java.model.InvalidArgumentException;
+import ca.ciccc.java.model.InvalidBookDateException;
 import ca.ciccc.java.model.Name;
 
 public class Bookstore {
@@ -16,9 +18,24 @@ public class Bookstore {
 
 	}
 
-	public void addBook(Name fn, Name ln, String title, int yearPublished) {
+	public void addBook(Name fn, Name ln, String title, int yearPublished) { // try / catch
 
-		al.add(new Book(fn, ln, title, yearPublished));
+		try {
+		
+			al.add(new Book(fn, ln, title, yearPublished));
+		
+		}
+		
+		catch(InvalidArgumentException invalidArgument){
+			
+			System.out.println("The exception message is: [" + invalidArgument.getMessage() + "]");
+			
+		}
+		catch(InvalidBookDateException invalidBookDate){
+			
+			System.out.println("The exception message is: [" + invalidBookDate.getMessage() + "]");
+			
+		}
 
 	}
 
