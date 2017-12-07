@@ -1,21 +1,41 @@
 package ca.ciccc.java.model;
 
+/**
+ * 
+ * @author Jesus
+ *
+ */
 public class Name {
 
+	/**
+	 * 
+	 */
 	private String name;
 
+	/**
+	 * 
+	 * @param name
+	 */
 	public Name(String name) {
 
 		setName(name);
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public final String getName() {
 
 		return this.name;
 
 	}
 
+	/**
+	 * 
+	 * @param name
+	 */
 	public final void setName(String name) {
 
 		if (name != null) {
