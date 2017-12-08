@@ -1,5 +1,10 @@
 package ca.ciccc.java.model;
 
+/**
+ * 
+ * @author Jesús
+ *
+ */
 public class InvalidArgumentException extends Exception {
 
 	private static final long serialVersionUID = 1L;

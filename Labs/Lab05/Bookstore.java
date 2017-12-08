@@ -9,16 +9,36 @@ import ca.ciccc.java.model.InvalidArgumentException;
 import ca.ciccc.java.model.InvalidBookDateException;
 import ca.ciccc.java.model.Name;
 
+/**
+ * 
+ * @author Jesús
+ *
+ */
 public class Bookstore {
 
+	/**
+	 * private attribute to save books
+	 */
 	private ArrayList<Book> al;
 
+	/**
+	 * Constructor: no parameters
+	 */
 	public Bookstore() {
 
 		al = new ArrayList<Book>();
 
 	}
 
+	/**
+	 * 
+	 * Method to add books (four parameters)
+	 * 
+	 * @param fn (Name fn)
+	 * @param ln (Name ln)
+	 * @param title (String title)
+	 * @param yearPublished (int yearPublished)
+	 */
 	public void addBook(Name fn, Name ln, String title, int yearPublished) {
 
 		try {
@@ -39,6 +59,16 @@ public class Bookstore {
 
 	}
 
+	/**
+	 * 
+	 * Method to add books with biography (five parameters)
+	 * 
+	 * @param fn (Name fn)
+	 * @param ln (Name ln)
+	 * @param title (String title)
+	 * @param yearPublished (int publishedYear)
+	 * @param subject (Name subject)
+	 */
 	public void addBook(Name fn, Name ln, String title, int yearPublished, Name subject) {
 
 		try {
@@ -57,6 +87,9 @@ public class Bookstore {
 
 	}
 
+	/**
+	 * Method to display books saved in the array list
+	 */
 	public void displayBooks() {
 
 		Iterator<Book> it = al.iterator();
@@ -77,17 +110,17 @@ public class Bookstore {
 		bs.addBook(new Name("Antoine"), new Name("de Saint-Exupéry"), "The Little Prince", 1943);
 		bs.addBook(new Name("Agatha"), new Name("Christie"), "And Then There Were None", 1939);
 		bs.addBook(new Name("Lewis"), new Name("Carroll"), "Alice in Wonderland", 1865);
-		
+
 		// adding a book with biography
 		bs.addBook(new Name("Biography"), new Name("Instance"), "Biography Instance", 2017,
 				new Name("Testing biography"));
-		
+
 		// exception with a empty name
 		bs.addBook(new Name(""), new Name("Argument"), "Invalid Argument", 2017);
-		
+
 		// exception with a null last name
 		bs.addBook(new Name("Invalid"), new Name(null), "Invalid Argument", 2017);
-		
+
 		// exception with a published year greater than 2017
 		bs.addBook(new Name("Invalid"), new Name("Book"), "Invalid Book", 2018, new Name("Testing exception"));
 

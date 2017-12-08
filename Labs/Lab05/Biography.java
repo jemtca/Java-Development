@@ -2,25 +2,34 @@ package ca.ciccc.java.model;
 
 /**
  * 
- * @author Jesus
+ * @author Jesús
  *
  */
 public final class Biography extends Book {
 
 	/**
-	 * 
+	 * private attribute for subject
 	 */
 	private Name subject;
 
 	/**
 	 * 
+	 * Constructor: five parameters
+	 * 
 	 * @param firstName
+	 *            (Name firstName)
 	 * @param lastName
+	 *            (Name lastName)
 	 * @param title
+	 *            (String title)
 	 * @param yearPublished
+	 *            (int yearPublished)
 	 * @param subject
+	 *            (Name subject)
 	 * @throws InvalidArgumentException
+	 *             if first name or last name is null or empty
 	 * @throws InvalidBookDateException
+	 *             if published year is greater than 2017
 	 */
 	public Biography(Name firstName, Name lastName, String title, int yearPublished, Name subject)
 			throws InvalidArgumentException, InvalidBookDateException {
@@ -30,8 +39,9 @@ public final class Biography extends Book {
 	}
 
 	/**
+	 * Subject accessor
 	 * 
-	 * @return
+	 * @return subject value
 	 */
 	public final Name getSubject() {
 
@@ -40,8 +50,10 @@ public final class Biography extends Book {
 	}
 
 	/**
+	 * Subject mutator
 	 * 
 	 * @param subject
+	 *            (Name subject)
 	 */
 	public final void setSubject(Name subject) {
 
@@ -55,7 +67,7 @@ public final class Biography extends Book {
 
 	@Override
 	public String toString() {
-		return "Biography [firstName = " + getFirstName() + ", lastName = " + getLastName() + ", title = " + getTitle()
+		return "Biography: [firstName = " + getFirstName() + ", lastName = " + getLastName() + ", title = " + getTitle()
 				+ ", yearPublished = " + getYearPublished() + ", subject = " + subject + "]";
 	}
 

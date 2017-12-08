@@ -2,19 +2,21 @@ package ca.ciccc.java.model;
 
 /**
  * 
- * @author Jesus
+ * @author Jesús
  *
  */
 public class Name {
 
 	/**
-	 * 
+	 * private attribute for name
 	 */
 	private String name;
 
 	/**
+	 * Constructor: one parameter
 	 * 
 	 * @param name
+	 *            (String name)
 	 */
 	public Name(String name) {
 
@@ -23,8 +25,9 @@ public class Name {
 	}
 
 	/**
+	 * Name accessor
 	 * 
-	 * @return
+	 * @return name value
 	 */
 	public final String getName() {
 
@@ -33,8 +36,10 @@ public class Name {
 	}
 
 	/**
+	 * Name mutator
 	 * 
 	 * @param name
+	 *            (String name)
 	 */
 	public final void setName(String name) {
 
