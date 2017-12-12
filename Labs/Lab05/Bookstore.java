@@ -1,6 +1,7 @@
 package ca.ciccc.java.driver;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 import ca.ciccc.java.model.Book;
@@ -34,10 +35,14 @@ public class Bookstore {
 	 * 
 	 * Method to add books (four parameters)
 	 * 
-	 * @param fn (Name fn)
-	 * @param ln (Name ln)
-	 * @param title (String title)
-	 * @param yearPublished (int yearPublished)
+	 * @param fn
+	 *            (Name fn)
+	 * @param ln
+	 *            (Name ln)
+	 * @param title
+	 *            (String title)
+	 * @param yearPublished
+	 *            (int yearPublished)
 	 */
 	public void addBook(Name fn, Name ln, String title, int yearPublished) {
 
@@ -63,11 +68,16 @@ public class Bookstore {
 	 * 
 	 * Method to add books with biography (five parameters)
 	 * 
-	 * @param fn (Name fn)
-	 * @param ln (Name ln)
-	 * @param title (String title)
-	 * @param yearPublished (int publishedYear)
-	 * @param subject (Name subject)
+	 * @param fn
+	 *            (Name fn)
+	 * @param ln
+	 *            (Name ln)
+	 * @param title
+	 *            (String title)
+	 * @param yearPublished
+	 *            (int publishedYear)
+	 * @param subject
+	 *            (Name subject)
 	 */
 	public void addBook(Name fn, Name ln, String title, int yearPublished, Name subject) {
 
@@ -90,7 +100,23 @@ public class Bookstore {
 	/**
 	 * Method to display books saved in the array list
 	 */
-	public void displayBooks() {
+	public void displayBooksBeforeSort() {
+
+		Iterator<Book> it = al.iterator();
+
+		while (it.hasNext()) {
+			Book b = it.next();
+			System.out.println(b);
+		}
+
+	}
+
+	/**
+	 * Method to display sorted books saved in the array list
+	 */
+	public void displayBooksAfterSort() {
+
+		Collections.sort(al);
 
 		Iterator<Book> it = al.iterator();
 
@@ -124,7 +150,43 @@ public class Bookstore {
 		// exception with a published year greater than 2017
 		bs.addBook(new Name("Invalid"), new Name("Book"), "Invalid Book", 2018, new Name("Testing exception"));
 
-		bs.displayBooks();
+		System.out.println("\n[ ARRAY LIST BEFORE SORT ]\n");
+		bs.displayBooksBeforeSort();
+
+		System.out.println("\n\n[ ARRAY LIST AFTER SORT ]\n");
+		bs.displayBooksAfterSort();
+
+		// Testing equal from Biography
+		try {
+			Biography b1 = new Biography(new Name("Biography"), new Name("Instance"), "Biography Instance", 2017,
+					new Name("Testing biography"));
+
+			Biography b2 = new Biography(new Name("Biography"), new Name("Instance"), "Biography Instance", 2017,
+					new Name("Testing biography"));
+
+			Biography b3 = new Biography(new Name("Biography"), new Name("Instance"), "Biography Instance", 2017,
+					new Name("Testing biographi"));
+
+			System.out.print("\n\n");
+			System.out.println("Book 1 biography: [" + b1.getSubject() + "].");
+			System.out.println("Book 2 biography: [" + b2.getSubject() + "].");
+			System.out.println(
+					"Two books with the same biography (true if equals, false otherwise): " + b1.equals(b2) + ".");
+
+			System.out.println("\nBook 1 biography: [" + b1.getSubject() + "].");
+			System.out.println("Book 3 biography: [" + b3.getSubject() + "].");
+			System.out.println(
+					"Two books with different biography (false if different, true otherwise): " + b1.equals(b3) + ".");
+
+		} catch (InvalidArgumentException invalidArgument) {
+
+			System.out.println("The exception message is: [" + invalidArgument.getMessage() + "]");
+
+		} catch (InvalidBookDateException invalidBook) {
+
+			System.out.println("The exception message is: [" + invalidBook.getMessage() + "]\n");
+
+		}
 
 	}
 

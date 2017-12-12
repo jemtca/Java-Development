@@ -5,7 +5,7 @@ package ca.ciccc.java.model;
  * @author Jesús
  *
  */
-public class Book {
+public class Book implements Comparable<Book> {
 
 	/**
 	 * private attribute for first name
@@ -181,6 +181,81 @@ public class Book {
 			this.yearPublished = yearPublished;
 
 		}
+
+	}
+
+	@Override
+	public int hashCode() {
+
+		final int prime = 31;
+		int result = 1;
+
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + yearPublished;
+
+		return result;
+
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		if (this == obj) {
+
+			return true;
+
+		}
+		if (obj == null) {
+
+			return false;
+
+		}
+		if (!(obj instanceof Book)) {
+
+			return false;
+
+		}
+
+		Book other = (Book) obj;
+		if (title == null) {
+
+			if (other.title != null) {
+
+				return false;
+
+			}
+
+		} else if (!title.equals(other.title)) {
+
+			return false;
+
+		}
+		if (yearPublished != other.yearPublished) {
+
+			return false;
+
+		}
+
+		return true;
+
+	}
+
+	@Override
+	public int compareTo(Book b) {
+
+		int result = 0;
+
+		if (this.yearPublished > b.yearPublished) {
+
+			result = -1;
+
+		} else if (this.yearPublished < b.yearPublished) {
+
+			result = 1;
+
+		}
+
+		return result;
 
 	}
 
