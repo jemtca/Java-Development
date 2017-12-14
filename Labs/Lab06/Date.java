@@ -11,13 +11,13 @@ public class Date {
 
 	public Date(int day, int month, int year) {
 
-		if (isValidDate()) {
+		//if (isValidDate()) {
 
-			setDay(day);
-			setMonth(month);
 			setYear(year);
+			setMonth(month);
+			setDay(day);
 
-		}
+		//}
 
 	}
 
@@ -29,7 +29,7 @@ public class Date {
 
 	public final void setDay(int day) {
 
-		if (isValidDay()) {
+		if (isValidDay(day)) {
 
 			this.day = day;
 
@@ -45,7 +45,7 @@ public class Date {
 
 	public final void setMonth(int month) {
 
-		if (isValidMonth()) {
+		if (isValidMonth(month)) {
 
 			this.month = month;
 
@@ -61,7 +61,7 @@ public class Date {
 
 	public final void setYear(int year) {
 
-		if (isValidYear()) {
+		if (isValidYear(year)) {
 
 			this.year = year;
 
@@ -213,23 +213,23 @@ public class Date {
 
 	}
 
-	private boolean isValidDay() {
+	private boolean isValidDay(int day) {
 
 		boolean result = false;
 
-		if (this.month == 1 && this.month == 3 && this.month == 5 && this.month == 7 && this.month == 8
-				&& this.month == 10 && this.month == 12) {
-			if (this.day >= 1 && this.day <= 31) {
+		if (this.month == 1 || this.month == 3 || this.month == 5 || this.month == 7 || this.month == 8
+				|| this.month == 10 || this.month == 12) {
+			if (day >= 1 && day <= 31) {
 				result = true;
 			}
-		} else if (this.month == 4 && this.month == 6 && this.month == 9 && this.month == 11) {
-			if (this.day >= 1 && this.day <= 30) {
+		} else if (this.month == 4 || this.month == 6 || this.month == 9 || this.month == 11) {
+			if (day >= 1 && day <= 30) {
 				result = true;
 			}
 		} else if (this.month == 2) {
-			if (isLeapYear() && (this.day >= 1 && this.day <= 29)) {
+			if (isLeapYear() && (day >= 1 && day <= 29)) {
 				result = true;
-			} else if (!isLeapYear() && (this.day >= 1 && this.day <= 28)) {
+			} else if (!isLeapYear() && (day >= 1 && day <= 28)) {
 				result = true;
 			}
 
@@ -239,22 +239,22 @@ public class Date {
 
 	}
 
-	private boolean isValidMonth() {
+	private boolean isValidMonth(int month) {
 
 		boolean result = false;
 
-		if (this.month >= 1 && this.month <= 12) {
+		if (month >= 1 && month <= 12) {
 			result = true;
 		}
 
 		return result;
 	}
 
-	private boolean isValidYear() {
+	private boolean isValidYear(int year) {
 
 		boolean result = false;
 
-		if (this.year >= MIN_YEAR && this.year <= MAX_YEAR) {
+		if (year >= MIN_YEAR && year <= MAX_YEAR) {
 			result = true;
 		}
 
@@ -262,30 +262,37 @@ public class Date {
 
 	}
 
-	private boolean isValidDate() {
+//	private boolean isValidDate() {
+//
+//		boolean result = false;
+//
+//		if (isValidDay() && isValidMonth() && isValidYear()) {
+//			result = true;
+//		} else if (isValidDay() && isValidMonth() && !isValidYear()) {
+//			System.out.println("Invalid year provided.");
+//		} else if (isValidDay() && !isValidMonth() && isValidYear()) {
+//			System.out.println("Invalid month provided.");
+//		} else if (!isValidDay() && isValidMonth() && isValidYear()) {
+//			System.out.println("Invalid day provided.");
+//		} else if (isValidDay() && !isValidMonth() && !isValidYear()) {
+//			System.out.println("Invalid month and invalid year provided.");
+//		} else if (!isValidDay() && isValidMonth() && !isValidYear()) {
+//			System.out.println("Invalid day and invalid year provided.");
+//		} else if (!isValidDay() && !isValidMonth() && isValidYear()) {
+//			System.out.println("Invalid day and invalid month provided.");
+//		} else if (!isValidDay() && !isValidMonth() && !isValidYear()) {
+//			System.out.println("Invalid day, invalid month and invalid year provided.");
+//		}
+//
+//		return result;
+//
+//	}
 
-		boolean result = false;
-
-		if (isValidDay() && isValidMonth() && isValidYear()) {
-			result = true;
-		} else if (isValidDay() && isValidMonth() && !isValidYear()) {
-			System.out.println("Invalid year provided.");
-		} else if (isValidDay() && !isValidMonth() && isValidYear()) {
-			System.out.println("Invalid month provided.");
-		} else if (!isValidDay() && isValidMonth() && isValidYear()) {
-			System.out.println("Invalid day provided.");
-		} else if (isValidDay() && !isValidMonth() && !isValidYear()) {
-			System.out.println("Invalid month and invalid year provided.");
-		} else if (!isValidDay() && isValidMonth() && !isValidYear()) {
-			System.out.println("Invalid day and invalid year provided.");
-		} else if (!isValidDay() && !isValidMonth() && isValidYear()) {
-			System.out.println("Invalid day and invalid month provided.");
-		} else if (!isValidDay() && !isValidMonth() && !isValidYear()) {
-			System.out.println("Invalid day, invalid month and invalid year provided.");
-		}
-
-		return result;
-
+	@Override
+	public String toString() {
+		return "Date [day=" + day + ", month=" + month + ", year=" + year + "]";
 	}
+	
+	
 
 }
