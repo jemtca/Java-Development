@@ -129,21 +129,8 @@ public class InputOutput {
 		
 		}
 		
-		if() {
-			
-			System.out.println(month + " " + d.getDay() + ", " + d.getYear() + " was on " + d.getDayOfTheWeek() + ".");
-			
-		}
-		else if() {
-			
-			System.out.println(month + " " + d.getDay() + ", " + d.getYear() + " will be on " + d.getDayOfTheWeek() + ".");
-			
-		}
-		else {
-			
-			System.out.println(month + " " + d.getDay() + ", " + d.getYear() + " is on " + d.getDayOfTheWeek() + ".");
+		System.out.println(month + " " + d.getDay() + ", " + d.getYear() + " was on " + d.getDayOfTheWeek() + ".");
 		
-		}
 		
 	}
 

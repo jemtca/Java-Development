@@ -131,13 +131,14 @@ public class Date {
 
 	private int getRemainder() { // step 2 (get the remainder)
 
-		return getLastTwoDigits() % howManyTwelves();
+		return getLastTwoDigits() % 12;
+		//return getLastTwoDigits() % howManyTwelves();
 
 	}
 
 	private int howManyFours() { // step 3 (how many 4's)
 
-		return getRemainder() / 4;
+		return  getRemainder() / 4;
 
 	}
 
@@ -185,29 +186,46 @@ public class Date {
 			break;
 
 		}
+		
+		//System.out.println(result);
 
 		if (isLeapYear() && (this.month == 1 || this.month == 2)) {
 			result = result - 1;
-		} else if (this.year >= 1600 && this.year < 1700) {
+		} 
+		
+		if (this.year >= 1600 && this.year < 1700) {
 			result = result + 6;
-		} else if (this.year >= 1700 && this.year < 1800) {
+		}
+		
+		if (this.year >= 1700 && this.year < 1800) {
 			result = result + 4;
-		} else if (this.year >= 1800 && this.year < 1900) {
+		}
+		
+		if (this.year >= 1800 && this.year < 1900) {
 			result = result + 2;
-		} else if (this.year >= 2000 && this.year < 2100) {
+		}	
+		
+		if (this.year >= 2000 && this.year < 2100) {
 			result = result + 6;
-		} else if (this.year >= 2100 && this.year < 2200) {
+		}
+		
+		if (this.year >= 2100 && this.year < 2200) {
 			result = result + 4;
 		}
 
+		//System.out.println(result);
+		
 		return result;
 
 	}
 
 	private int addThenModBySeven() {
 
-		int result = getLastTwoDigits() + howManyTwelves() + getRemainder() + howManyFours() + this.month
-				+ getMonthCode();
+		int result = howManyTwelves() + getRemainder() + howManyFours() + this.day + getMonthCode();
+		
+		//System.out.println(result);
+		
+		//System.out.println(result % 7);
 
 		return result % 7;
 
