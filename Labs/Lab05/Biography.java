@@ -66,6 +66,55 @@ public final class Biography extends Book {
 	}
 
 	@Override
+	public int hashCode() {
+
+		final int prime = 31;
+		int result = super.hashCode();
+
+		result = prime * result + ((subject == null) ? 0 : subject.hashCode());
+
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		if (this == obj) {
+
+			return true;
+
+		}
+		if (!super.equals(obj)) {
+
+			return false;
+
+		}
+		if (!(obj instanceof Biography)) {
+
+			return false;
+
+		}
+
+		Biography other = (Biography) obj;
+		if (subject == null) {
+
+			if (other.subject != null) {
+
+				return false;
+
+			}
+
+		} else if (!subject.equals(other.subject)) {
+
+			return false;
+
+		}
+
+		return true;
+
+	}
+
+	@Override
 	public String toString() {
 		return "Biography: [firstName = " + getFirstName() + ", lastName = " + getLastName() + ", title = " + getTitle()
 				+ ", yearPublished = " + getYearPublished() + ", subject = " + subject + "]";
