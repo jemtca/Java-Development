@@ -4,101 +4,121 @@ import ca.ciccc.java.model.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * 
+ * @author Jesús
+ *
+ */
 public class InputOutput {
-	
+
+	/**
+	 * Constructor: No parameters
+	 */
 	public InputOutput() {
-		
-		
-		
+
 	}
-	
-	public Date splitDate(String date) { //int[]
-		
+
+	/**
+	 * Method that creates an instance from Date
+	 * 
+	 * @param date
+	 *            (String Date)
+	 * 
+	 * @return a Date instance
+	 */
+	public Date splitDate(String date) {
+
 		String[] s;
-		//int[] result = new int[3];
 		Date d;
-		
+
 		s = date.split("-");
-		
-//		for(int i = 0; i < 3; i++) {
-//			
-//			result[i] = Integer.valueOf(s[i]);
-//			//System.out.println(result[i]);
-//			
-//		}
-		
-		d = new Date(Integer.valueOf(s[2]),Integer.valueOf(s[1]),Integer.valueOf(s[0]));
-		
-		//System.out.println(Integer.valueOf(s[2]));
-		//System.out.println(Integer.valueOf(s[1]));
-		//System.out.println(Integer.valueOf(s[0]));
-		//System.out.println(d);
-		
-		
-		return d; //result
-	
+
+		d = new Date(Integer.valueOf(s[2]), Integer.valueOf(s[1]), Integer.valueOf(s[0]));
+
+		return d;
+
 	}
-	
+
+	/**
+	 * Method that validates a date
+	 * 
+	 * @param date
+	 *            (String date)
+	 * 
+	 * @return false if the date is not valid, true otherwise
+	 */
+	@SuppressWarnings("unused")
 	public boolean dateValidation(String date) {
-		
+
 		boolean result = false;
-		
-		if(date.length() == 10) {
-			
+
+		if (date.length() == 10) {
+
 			try {
-					
-					int year = Integer.parseInt(date.substring(0,4));
-					int month = Integer.parseInt(date.substring(5,7));
-					int day = Integer.parseInt(date.substring(8));
-					
-					char c1 = date.charAt(4);
-					char c2 = date.charAt(7);
-					
-					if(c1 == '-' && c2 == '-') {
-						result = true;
-						System.out.println("Date typed: " + year + c1 + month + c2 + day);
-					}
-					else {
-						
-						wrongDateMessage(date);
-						
-					}
-					
-			}
-			catch(NumberFormatException nfe) {
-	
+
+				int year = Integer.parseInt(date.substring(0, 4));
+				int month = Integer.parseInt(date.substring(5, 7));
+				int day = Integer.parseInt(date.substring(8));
+
+				char c1 = date.charAt(4);
+				char c2 = date.charAt(7);
+
+				if (c1 == '-' && c2 == '-') {
+
+					result = true;
+
+				} else {
+
+					wrongDateMessage(date);
+
+				}
+
+			} catch (NumberFormatException nfe) {
+
 				wrongDateMessage(date);
-				
+
 			}
-			
+
+		} else {
+
+			if (date.compareToIgnoreCase("quit") != 0) {
+
+				wrongDateMessage(date);
+
+			}
+
 		}
-		else {
-			
-			wrongDateMessage(date);
-			
-		}
-		
+
 		return result;
-		
-		
+
 	}
-	
-	public void wrongDateMessage(String date) {
-		
-		System.out.println("[DATE FORMAT (YYYY-MM-DD) IS WRONG, YOU HAVE TYPED: " + date + "]");
-		
+
+	/**
+	 * Method that prints a message when a date is not valid
+	 * 
+	 * @param date
+	 *            (String date)
+	 */
+	private void wrongDateMessage(String date) {
+
+		System.out.println("[DATE THAT YOU JUST TYPED IS WRONG. TRY IT AGAIN]");
+
 	}
-	
+
+	/**
+	 * Method that prints the information of a date instance
+	 * 
+	 * @param d
+	 *            (Date d)
+	 */
 	public void printDayOfTheWeek(Date d) {
-		
-		//System.out.println(d.getDayOfTheWeek());
-		
+
 		String date = d.getYear() + "-" + d.getMonth() + "-" + d.getDay();
 		LocalDate localDate = LocalDate.now();
 		String month = "";
-		
-		switch(d.getMonth()) {
-		
+
+		switch (d.getMonth()) {
+
 		case 1:
 			month = "January";
 			break;
@@ -135,38 +155,28 @@ public class InputOutput {
 		case 12:
 			month = "December";
 			break;
-		
+
 		}
-		
-		//System.out.println(d);
-		
-		if(d.getDay() == 0 && d.getMonth() == 0 && d.getYear() == 0) {
-			
+
+		if (d.getDay() == 0 && d.getMonth() == 0 && d.getYear() == 0) {
+
 			wrongDateMessage(date);
-			
-		}
-		else if(date.compareTo(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate)) < 0) {
-			
-			//System.out.println("less");
+
+		} else if (date.compareTo(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate)) < 0) {
+
 			System.out.println(month + " " + d.getDay() + ", " + d.getYear() + " was on " + d.getDayOfTheWeek() + ".");
-			
-		}
-		else if(date.compareTo(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate)) > 0) {
-			
-			//System.out.println("greater");
-			System.out.println(month + " " + d.getDay() + ", " + d.getYear() + " will be on " + d.getDayOfTheWeek() + ".");
-			
-		}
-		//else if(date.compareTo(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate)) == 0){
-		else {
-			
-			//System.out.println("equal");
+
+		} else if (date.compareTo(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate)) > 0) {
+
+			System.out.println(
+					month + " " + d.getDay() + ", " + d.getYear() + " will be on " + d.getDayOfTheWeek() + ".");
+
+		} else {
+
 			System.out.println(month + " " + d.getDay() + ", " + d.getYear() + " is " + d.getDayOfTheWeek() + ".");
-			
+
 		}
-		
-		//System.out.println(month + " " + d.getDay() + ", " + d.getYear() + " was on " + d.getDayOfTheWeek() + ".");
-		
+
 	}
 
 }

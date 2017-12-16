@@ -14,8 +14,8 @@ public class InputReader {
 	private Scanner scanner;
 
 	/**
-	 * Default constructor for InputReader class Create a new InputReader to
-	 * read user input.
+	 * Default constructor for InputReader class Create a new InputReader to read
+	 * user input.
 	 */
 	public InputReader() {
 		scanner = new Scanner(System.in);

@@ -1,35 +1,78 @@
 package ca.ciccc.java.model;
 
+/**
+ * 
+ * @author Jesús
+ *
+ */
 public class Date {
 
+	/**
+	 * private attribute for the day
+	 */
 	private int day;
+	/**
+	 * private attribute for the month
+	 */
 	private int month;
+	/**
+	 * private attribute for the year
+	 */
 	private int year;
 
+	/**
+	 * Constant to set the minimum year
+	 */
 	public static final int MIN_YEAR = 1600;
+	/**
+	 * Constant to set the maximum year
+	 */
 	public static final int MAX_YEAR = 2100;
 
+	/**
+	 * Constructor: Three parameters
+	 * 
+	 * @param day
+	 *            (int day)
+	 * @param month
+	 *            (int month)
+	 * @param year
+	 *            (int year)
+	 */
 	public Date(int day, int month, int year) {
 
-		if (isValidDate(day,month,year)) {
+		if (isValidDate(day, month, year)) {
 
 			setYear(year);
 			setMonth(month);
-			setDay(day);
+			setDay(day, month);
 
 		}
 
 	}
 
+	/**
+	 * Day accessor
+	 * 
+	 * @return day value
+	 */
 	public final int getDay() {
 
 		return this.day;
 
 	}
 
-	public final void setDay(int day) {
+	/**
+	 * Day mutator
+	 * 
+	 * @param day
+	 *            (int day)
+	 * @param month
+	 *            (int month)
+	 */
+	public final void setDay(int day, int month) { // ask to Rodrigo
 
-		if (isValidDay(day)) {
+		if (isValidDay(day, month)) {
 
 			this.day = day;
 
@@ -37,12 +80,23 @@ public class Date {
 
 	}
 
+	/**
+	 * Month accessor
+	 * 
+	 * @return month value
+	 */
 	public final int getMonth() {
 
 		return this.month;
 
 	}
 
+	/**
+	 * Month mutator
+	 * 
+	 * @param month
+	 *            (int month)
+	 */
 	public final void setMonth(int month) {
 
 		if (isValidMonth(month)) {
@@ -53,12 +107,23 @@ public class Date {
 
 	}
 
+	/**
+	 * Year accessor
+	 * 
+	 * @return year value
+	 */
 	public final int getYear() {
 
 		return this.year;
 
 	}
 
+	/**
+	 * Year mutator
+	 * 
+	 * @param year
+	 *            (int year)
+	 */
 	public final void setYear(int year) {
 
 		if (isValidYear(year)) {
@@ -69,7 +134,12 @@ public class Date {
 
 	}
 
-	public String getDayOfTheWeek() { // return the day of the week as a string
+	/**
+	 * Method that gets the day of the week
+	 * 
+	 * @return the day of the week as a string
+	 */
+	public String getDayOfTheWeek() {
 
 		String result = "";
 		int day = addThenModBySeven();
@@ -104,6 +174,11 @@ public class Date {
 
 	}
 
+	/**
+	 * Private method that calculates leap years
+	 * 
+	 * @return false if it is not leap year, true otherwise
+	 */
 	private boolean isLeapYear() {
 
 		boolean leapYear = false;
@@ -117,32 +192,57 @@ public class Date {
 
 	}
 
-	private int getLastTwoDigits() { // step 0 (get the last two numbers of a year)
+	/**
+	 * Private method that helps to get the day of the week
+	 * 
+	 * @return last two numbers of a year
+	 */
+	private int getLastTwoDigits() { // step 0
 
 		return this.year % 100;
 
 	}
 
-	private int howManyTwelves() { // step 1 (how many 12's)
+	/**
+	 * Private method that helps to get the day of the week
+	 * 
+	 * @return how many 12's
+	 */
+	private int howManyTwelves() { // step 1
 
 		return getLastTwoDigits() / 12;
 
 	}
 
-	private int getRemainder() { // step 2 (get the remainder)
+	/**
+	 * Private method that helps to get the day of the week
+	 * 
+	 * @return the remainder
+	 */
+	private int getRemainder() { // step 2
 
 		return getLastTwoDigits() % 12;
-		//return getLastTwoDigits() % howManyTwelves();
+		// return getLastTwoDigits() % howManyTwelves();
 
 	}
 
-	private int howManyFours() { // step 3 (how many 4's)
+	/**
+	 * Private method that helps to get the day of the week
+	 * 
+	 * @return how many 4's
+	 */
+	private int howManyFours() { // step 3
 
-		return  getRemainder() / 4;
+		return getRemainder() / 4;
 
 	}
 
-	private int getMonthCode() { // step 5 (get the code of the month)
+	/**
+	 * Private method that helps to get the day of the week
+	 * 
+	 * @return the code of the month
+	 */
+	private int getMonthCode() { // step 5
 
 		int result = 0;
 
@@ -186,65 +286,72 @@ public class Date {
 			break;
 
 		}
-		
-		//System.out.println(result);
 
 		if (isLeapYear() && (this.month == 1 || this.month == 2)) {
 			result = result - 1;
-		} 
-		
+		}
+
 		if (this.year >= 1600 && this.year < 1700) {
 			result = result + 6;
 		}
-		
+
 		if (this.year >= 1700 && this.year < 1800) {
 			result = result + 4;
 		}
-		
+
 		if (this.year >= 1800 && this.year < 1900) {
 			result = result + 2;
-		}	
-		
+		}
+
 		if (this.year >= 2000 && this.year < 2100) {
 			result = result + 6;
 		}
-		
+
 		if (this.year >= 2100 && this.year < 2200) {
 			result = result + 4;
 		}
 
-		//System.out.println(result);
-		
 		return result;
 
 	}
 
+	/**
+	 * Private method that helps to get the day of the week
+	 * 
+	 * @return the result of add several number, then applies module 7 to that sum
+	 */
 	private int addThenModBySeven() {
 
 		int result = howManyTwelves() + getRemainder() + howManyFours() + this.day + getMonthCode();
-		
-		//System.out.println(result);
-		
-		//System.out.println(result % 7);
 
 		return result % 7;
 
 	}
 
-	private boolean isValidDay(int day) {
+	/**
+	 * 
+	 * Private method that checks if a day is valid from a specific month
+	 * 
+	 * @param day
+	 *            (int day)
+	 * @param month
+	 *            (int month)
+	 * 
+	 * @return false if the day is not valid, true otherwise
+	 */
+	private boolean isValidDay(int day, int month) {
 
 		boolean result = false;
 
-		if (this.month == 1 || this.month == 3 || this.month == 5 || this.month == 7 || this.month == 8
-				|| this.month == 10 || this.month == 12) {
+		if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
 			if (day >= 1 && day <= 31) {
 				result = true;
 			}
-		} else if (this.month == 4 || this.month == 6 || this.month == 9 || this.month == 11) {
+		} else if (month == 4 || month == 6 || month == 9 || month == 11) {
 			if (day >= 1 && day <= 30) {
 				result = true;
 			}
-		} else if (this.month == 2) {
+		} else if (month == 2) {
 			if (isLeapYear() && (day >= 1 && day <= 29)) {
 				result = true;
 			} else if (!isLeapYear() && (day >= 1 && day <= 28)) {
@@ -257,6 +364,15 @@ public class Date {
 
 	}
 
+	/**
+	 * 
+	 * Private method that checks if a month is valid
+	 * 
+	 * @param month
+	 *            (int month)
+	 * 
+	 * @return false if the month is not valid, true otherwise
+	 */
 	private boolean isValidMonth(int month) {
 
 		boolean result = false;
@@ -268,6 +384,14 @@ public class Date {
 		return result;
 	}
 
+	/**
+	 * Private method that checks if a year is between MIN_YEAR and MAX_YEAR
+	 * 
+	 * @param year
+	 *            (int year)
+	 * 
+	 * @return false if the year is not valid, true otherwise
+	 */
 	private boolean isValidYear(int year) {
 
 		boolean result = false;
@@ -280,37 +404,33 @@ public class Date {
 
 	}
 
+	/**
+	 * Private method that checks if a date (day, month, year) is valid
+	 * 
+	 * @param day
+	 *            (int day)
+	 * @param month
+	 *            (int month)
+	 * @param year
+	 *            (int year)
+	 * 
+	 * @return false if the date is not valid, true otherwise
+	 */
 	private boolean isValidDate(int day, int month, int year) {
 
 		boolean result = false;
 
-		if (isValidDay(day) && isValidMonth(month) && isValidYear(year)) {
+		if (isValidDay(day, month) && isValidMonth(month) && isValidYear(year)) {
 			result = true;
-		} //else if (isValidDay(day) && isValidMonth(month) && !isValidYear(year)) {
-//			System.out.println("Invalid year provided.");
-//		} else if (isValidDay(day) && !isValidMonth(month) && isValidYear(year)) {
-//			System.out.println("Invalid month provided.");
-//		} else if (!isValidDay(day) && isValidMonth(month) && isValidYear(year)) {
-//			System.out.println("Invalid day provided.");
-//		} else if (isValidDay(day) && !isValidMonth(month) && !isValidYear(year)) {
-//			System.out.println("Invalid month and invalid year provided.");
-//		} else if (!isValidDay(day) && isValidMonth(month) && !isValidYear(year)) {
-//			System.out.println("Invalid day and invalid year provided.");
-//		} else if (!isValidDay(day) && !isValidMonth(month) && isValidYear(year)) {
-//			System.out.println("Invalid day and invalid month provided.");
-//		} else if (!isValidDay(day) && !isValidMonth(month) && !isValidYear(year)) {
-//			System.out.println("Invalid day, invalid month and invalid year provided.");
-//		}
+		}
 
 		return result;
 
 	}
 
-	@Override
-	public String toString() {
-		return "Date [day=" + day + ", month=" + month + ", year=" + year + "]";
-	}
-	
-	
+	// @Override
+	// public String toString() {
+	// return "Date [day=" + day + ", month=" + month + ", year=" + year + "]";
+	// }
 
 }
