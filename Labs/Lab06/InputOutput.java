@@ -1,6 +1,8 @@
 package ca.ciccc.java.view;
 
 import ca.ciccc.java.model.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class InputOutput {
 	
@@ -27,10 +29,10 @@ public class InputOutput {
 		
 		d = new Date(Integer.valueOf(s[2]),Integer.valueOf(s[1]),Integer.valueOf(s[0]));
 		
-		System.out.println(Integer.valueOf(s[2]));
-		System.out.println(Integer.valueOf(s[1]));
-		System.out.println(Integer.valueOf(s[0]));
-		System.out.println(d);
+		//System.out.println(Integer.valueOf(s[2]));
+		//System.out.println(Integer.valueOf(s[1]));
+		//System.out.println(Integer.valueOf(s[0]));
+		//System.out.println(d);
 		
 		
 		return d; //result
@@ -56,6 +58,11 @@ public class InputOutput {
 						result = true;
 						System.out.println("Date typed: " + year + c1 + month + c2 + day);
 					}
+					else {
+						
+						wrongDateMessage(date);
+						
+					}
 					
 			}
 			catch(NumberFormatException nfe) {
@@ -78,7 +85,7 @@ public class InputOutput {
 	
 	public void wrongDateMessage(String date) {
 		
-		System.out.println("Date format (yyyy-mm-dd) is wrong, you have typed: " + date);
+		System.out.println("[DATE FORMAT (YYYY-MM-DD) IS WRONG, YOU HAVE TYPED: " + date + "]");
 		
 	}
 	
@@ -86,6 +93,8 @@ public class InputOutput {
 		
 		//System.out.println(d.getDayOfTheWeek());
 		
+		String date = d.getYear() + "-" + d.getMonth() + "-" + d.getDay();
+		LocalDate localDate = LocalDate.now();
 		String month = "";
 		
 		switch(d.getMonth()) {
@@ -129,8 +138,34 @@ public class InputOutput {
 		
 		}
 		
-		System.out.println(month + " " + d.getDay() + ", " + d.getYear() + " was on " + d.getDayOfTheWeek() + ".");
+		//System.out.println(d);
 		
+		if(d.getDay() == 0 && d.getMonth() == 0 && d.getYear() == 0) {
+			
+			wrongDateMessage(date);
+			
+		}
+		else if(date.compareTo(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate)) < 0) {
+			
+			//System.out.println("less");
+			System.out.println(month + " " + d.getDay() + ", " + d.getYear() + " was on " + d.getDayOfTheWeek() + ".");
+			
+		}
+		else if(date.compareTo(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate)) > 0) {
+			
+			//System.out.println("greater");
+			System.out.println(month + " " + d.getDay() + ", " + d.getYear() + " will be on " + d.getDayOfTheWeek() + ".");
+			
+		}
+		//else if(date.compareTo(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(localDate)) == 0){
+		else {
+			
+			//System.out.println("equal");
+			System.out.println(month + " " + d.getDay() + ", " + d.getYear() + " is " + d.getDayOfTheWeek() + ".");
+			
+		}
+		
+		//System.out.println(month + " " + d.getDay() + ", " + d.getYear() + " was on " + d.getDayOfTheWeek() + ".");
 		
 	}
 

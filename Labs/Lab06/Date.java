@@ -11,13 +11,13 @@ public class Date {
 
 	public Date(int day, int month, int year) {
 
-		//if (isValidDate()) {
+		if (isValidDate(day,month,year)) {
 
 			setYear(year);
 			setMonth(month);
 			setDay(day);
 
-		//}
+		}
 
 	}
 
@@ -280,31 +280,31 @@ public class Date {
 
 	}
 
-//	private boolean isValidDate() {
-//
-//		boolean result = false;
-//
-//		if (isValidDay() && isValidMonth() && isValidYear()) {
-//			result = true;
-//		} else if (isValidDay() && isValidMonth() && !isValidYear()) {
+	private boolean isValidDate(int day, int month, int year) {
+
+		boolean result = false;
+
+		if (isValidDay(day) && isValidMonth(month) && isValidYear(year)) {
+			result = true;
+		} //else if (isValidDay(day) && isValidMonth(month) && !isValidYear(year)) {
 //			System.out.println("Invalid year provided.");
-//		} else if (isValidDay() && !isValidMonth() && isValidYear()) {
+//		} else if (isValidDay(day) && !isValidMonth(month) && isValidYear(year)) {
 //			System.out.println("Invalid month provided.");
-//		} else if (!isValidDay() && isValidMonth() && isValidYear()) {
+//		} else if (!isValidDay(day) && isValidMonth(month) && isValidYear(year)) {
 //			System.out.println("Invalid day provided.");
-//		} else if (isValidDay() && !isValidMonth() && !isValidYear()) {
+//		} else if (isValidDay(day) && !isValidMonth(month) && !isValidYear(year)) {
 //			System.out.println("Invalid month and invalid year provided.");
-//		} else if (!isValidDay() && isValidMonth() && !isValidYear()) {
+//		} else if (!isValidDay(day) && isValidMonth(month) && !isValidYear(year)) {
 //			System.out.println("Invalid day and invalid year provided.");
-//		} else if (!isValidDay() && !isValidMonth() && isValidYear()) {
+//		} else if (!isValidDay(day) && !isValidMonth(month) && isValidYear(year)) {
 //			System.out.println("Invalid day and invalid month provided.");
-//		} else if (!isValidDay() && !isValidMonth() && !isValidYear()) {
+//		} else if (!isValidDay(day) && !isValidMonth(month) && !isValidYear(year)) {
 //			System.out.println("Invalid day, invalid month and invalid year provided.");
 //		}
-//
-//		return result;
-//
-//	}
+
+		return result;
+
+	}
 
 	@Override
 	public String toString() {
